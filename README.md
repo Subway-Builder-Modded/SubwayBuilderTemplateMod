@@ -1,6 +1,6 @@
 # Subway Builder Mod Template
 
-TypeScript + React template for Subway Builder mods using rolldown-vite.
+TypeScript + React template for Subway Builder mods using rolldown-vite. **Please use pnpm!**
 
 ## Setup
 
@@ -37,7 +37,7 @@ pnpm install
 
    This runs the vite watcher and game simultaneously. Logs are saved to `debug/latest.log`.
 
-4. After making changes, reload mods in-game or restart.
+4. After making changes, reload mods in-game or restart. You can use CTRL + SHIFT + R or CMD + SHIFT + R to hot reload in-game.
 
 ## Project Structure
 
