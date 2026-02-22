@@ -301,7 +301,7 @@ export interface ModdingAPI {
     /** Called when a city is loaded. */
     onCityLoad(callback: (cityCode: string) => void): void;
     /** Called when the MapLibre map instance is ready. */
-    onMapReady(callback: (map: unknown) => void): void;
+    onMapReady(callback: (map: maplibregl.Map) => void): void;
     /** Called when a station is constructed. */
     onStationBuilt(callback: (station: Station) => void): void;
     /** Called when a station is deleted. */
@@ -492,7 +492,7 @@ export interface ModdingAPI {
     /** Get the current game constants. */
     getConstants(): GameConstants;
     /** Get the MapLibre map instance, or null if not loaded. */
-    getMap(): unknown | null;
+    getMap(): maplibregl.Map | null;
     /** Get the current city code. */
     getCityCode(): string;
     /**
