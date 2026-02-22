@@ -1,5 +1,8 @@
 # Subway Builder Mod Template
 
+> [!IMPORTANT]
+> This template targets **Modding API v1.0.0** (Subway Builder game version **1.1.0**). Types may not match older or newer game versions.
+
 TypeScript + React template for Subway Builder mods using rolldown-vite. **Please use pnpm!**
 
 ## Setup
@@ -48,7 +51,13 @@ pnpm install
 │   │   └── ExamplePanel.tsx # Example React component
 │   └── types/
 │       ├── react.ts         # React shim (pulls from game API)
-│       └── subway-builder.d.ts  # Game API types
+│       ├── index.d.ts       # Re-exports + global Window
+│       ├── api.d.ts         # Main ModdingAPI interface
+│       ├── core.d.ts        # Coordinate, BoundingBox, etc.
+│       ├── game-state.d.ts  # Station, Track, Train, Route
+│       ├── build.d.ts       # Build automation
+│       ├── ui.d.ts          # UI placements & options
+│       └── ...              # + 13 more type modules
 ├── scripts/
 │   ├── run.ts               # Game launcher with logging
 │   └── link.ts              # Symlink management
@@ -121,7 +130,7 @@ api.actions.setMoney(1000000);
 api.actions.setPause(true);
 ```
 
-See `src/types/subway-builder.d.ts` for the full API reference.
+See `src/types/` for the full API type reference, or the [official docs](https://www.subwaybuilder.com/docs/v1.0.0).
 
 ## Mods Folder Location
 
