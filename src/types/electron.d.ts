@@ -27,6 +27,7 @@ export interface ElectronAPI {
 
   /** Sets a value in the game's settings file metro-maker4/settings.json. */
   setStorageItem: (key: string, value: unknown) => Promise<{ success: boolean }>;
+  setSetting: (key: string, value: unknown) => Promise<{ success: boolean }>;
 
   /**
    * @deprecated you shouldn't be fucking using this...
