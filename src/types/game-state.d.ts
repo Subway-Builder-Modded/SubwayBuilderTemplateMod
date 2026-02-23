@@ -161,6 +161,8 @@ export interface DemandPoint {
   jobs: number;
   residents: number;
   popIds: string[];
+  residentModeShare: ModeChoiceStats;
+  workerModeShare: ModeChoiceStats;
 }
 
 export interface Pop {
@@ -171,6 +173,9 @@ export interface Pop {
   drivingSeconds: number;
   drivingDistance: number;
   drivingPath?: Coordinate[];
+  homeDepartureTime: number;
+  workDepartureTime: number;
+  lastCommute: CompletedPopCommute;
 }
 
 export interface DemandData {
@@ -208,8 +213,27 @@ export interface ModeChoiceStats {
 
 export interface CompletedCommute {
   popId: string;
-  mode: 'walking' | 'driving' | 'transit';
-  duration: number;
+  size: number;
+  journeyEnd: number;
+  journeyStart: number;
+  origin: 'work' | 'home';
+  stationRoutes: StationRoute[];
+}
+
+export interface CompletedPopCommute {
+  modeChoice: ModeChoiceStats;
+  transitPaths: TransitPath[];
+  walking: WalkingCommute;
+}
+
+export interface WalkingCommute {
+  time: number;
+  distance: number;
+}
+
+export interface StationRoute {
+  stationIds: string[];
+  routeId: string;
 }
 
 export interface StationRidership {
@@ -220,4 +244,16 @@ export interface StationRidership {
 
 export interface RouteRidership {
   byStation: Array<{ stationId: string; popCount: number }>;
+}
+
+export interface TransitPath {
+  arrivalTime: number;
+  departureTime: number;
+  fromStopCoords: Coordinate;
+  fromStopId: string;
+  isDriving: boolean;
+  isWalking: boolean;
+  routeId: string;
+  toStopCoords: Coordinate;
+  toStopId: string;
 }

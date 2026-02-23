@@ -13,7 +13,10 @@ export interface ModManifest {
   /** Mod author information. */
   author: {
     name: string;
+    url?: string;
   };
   /** Entry point JavaScript file (e.g. 'mod.js'). */
   main: string;
+  /** Optional URL to the mod's homepage or repository. */
+  homepage?: string;
 }
