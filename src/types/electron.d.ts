@@ -18,6 +18,15 @@ export interface ElectronAPI {
   deleteSaveFile(filename: string): Promise<boolean>;
   importMetroFile(): Promise<unknown>;
   setLicenseKey(key: string): Promise<void>;
+  getModsFolder: () => Promise<string>;
+  scanMods: () => Promise<{ success: boolean; mods: Mod[] }>;
+
+  /** Gets a value from the game's settings file metro-maker4/settings.json. */
+  getStorageItem: (key: string) => Promise<{ success: boolean; data: unknown }>;
+  getSetting: (key: string) => Promise<{ success: boolean; value: unknown }>;
+
+  /** Sets a value in the game's settings file metro-maker4/settings.json. */
+  setStorageItem: (key: string, value: unknown) => Promise<{ success: boolean }>;
 
   /**
    * @deprecated you shouldn't be fucking using this...
@@ -33,4 +42,10 @@ export interface ElectronAPIExtended {
   getDataServerPort(): Promise<number>;
   buildBlueprints(): Promise<void>;
   findRoutePathOrder(routeId: string): Promise<unknown>;
+}
+
+export type Mod = ModManifest & {
+  /** Absolute path to the mod's main JavaScript file. */
+  path: string;
+  enabled: boolean;
 }
