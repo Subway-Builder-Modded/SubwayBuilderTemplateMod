@@ -19,7 +19,7 @@ export interface ElectronAPI {
   importMetroFile(): Promise<unknown>;
   setLicenseKey(key: string): Promise<void>;
   getModsFolder: () => Promise<string>;
-  scanMods: () => Promise<{ success: boolean; mods: Mod[] }>;
+  scanMods: () => Promise<{ success: boolean; mods: ModStatus[] }>;
 
   /** Gets a value from the game's settings file metro-maker4/settings.json. */
   getStorageItem: (key: string) => Promise<{ success: boolean; data: unknown }>;
@@ -44,7 +44,7 @@ export interface ElectronAPIExtended {
   findRoutePathOrder(routeId: string): Promise<unknown>;
 }
 
-export type Mod = ModManifest & {
+export type ModStatus = ModManifest & {
   /** Absolute path to the mod's main JavaScript file. */
   path: string;
   enabled: boolean;
