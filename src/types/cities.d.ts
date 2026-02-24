@@ -48,8 +48,8 @@ export interface CityConfig {
 
 /** City data as returned by `api.utils.getCities()`. Extends CityConfig with fields that are always present in returned data. */
 export interface City extends CityConfig {
-  /** Country the city is in (always present in returned data) */
-  country: string;
+  /** Country the city is in (always present in returned for in-game cities // not necessarily present for modded cities) */
+  country?: string;
   /** Description of the city (always present in returned data) */
   description: string;
 }
