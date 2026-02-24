@@ -1,5 +1,7 @@
 /** Subway Builder Modding API v1.0.0 */
 
+import { ModManifest } from "./manifest";
+
 // =============================================================================
 // ELECTRON IPC TYPES
 // =============================================================================
@@ -18,7 +20,10 @@ export interface ElectronAPI {
   deleteSaveFile(filename: string): Promise<boolean>;
   importMetroFile(): Promise<unknown>;
   setLicenseKey(key: string): Promise<void>;
+
+  /** Gets the absolute path to the game's "mods" folder, where users  place mod files. */
   getModsFolder: () => Promise<string>;
+  /** Scans the mods folder and returns a list of mod statuses. */
   scanMods: () => Promise<{ success: boolean; mods: ModStatus[] }>;
 
   /** Gets a value from the game's settings file metro-maker4/settings.json. */
@@ -28,6 +33,9 @@ export interface ElectronAPI {
   /** Sets a value in the game's settings file metro-maker4/settings.json. */
   setStorageItem: (key: string, value: unknown) => Promise<{ success: boolean }>;
   setSetting: (key: string, value: unknown) => Promise<{ success: boolean }>;
+
+  /** Gets the user's current language setting (e.g. "en", "fr", "de"). */
+  getLanguage(): Promise<string>;
 
   /**
    * @deprecated you shouldn't be fucking using this...
