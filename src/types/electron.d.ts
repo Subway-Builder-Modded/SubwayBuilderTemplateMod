@@ -37,9 +37,6 @@ export interface ElectronAPI {
   /** Gets the user's current language setting (e.g. "en", "fr", "de"). */
   getLanguage(): Promise<string>;
 
-
-
-
   /**
    * @deprecated you shouldn't be fucking using this...
    */
