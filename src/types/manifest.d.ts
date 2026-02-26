@@ -19,4 +19,11 @@ export interface ModManifest {
   main: string;
   /** Optional URL to the mod's homepage or repository. */
   homepage?: string;
+  /** Optional object containing mod dependencies. */
+  dependencies?: unknown;
+  /** Optional icon string */
+  icon?: string;
+  /** Maximum and minimum supported game versions */
+  maxGameVersion?: string;
+  minGameVersion?: string;
 }
